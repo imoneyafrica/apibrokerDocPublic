@@ -1,0 +1,3907 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API BROKER DOCUMENTATION",
+        "description": "Cette documentation API est destin\u00e9e aux utilisateurs de type USET et ADMIN et fournit toutes les informations n\u00e9cessaires pour interagir avec les services de API BROKER en fonction de leur profil de mani\u00e8re s\u00e9curis\u00e9e et efficace. Les USER ou ADMIN peuvent y trouver des descriptions compl\u00e8tes des endpoints disponibles, des param\u00e8tres requis, ainsi que des exemples d'utilisation.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://apibroker.beta.imoney.africa",
+            "description": "Dev Server"
+        },
+        {
+            "url": "https://bf060back.preprod.apibroker.africa",
+            "description": "Preprod Server"
+        }
+    ],
+    "paths": {
+        "/_error/{code}": {},
+        "delete": {},
+        "/api/{version}/secure/accounts/new": {
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Create user sub-account and organisation account",
+                "operationId": "post_create_account",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "balance": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "string",
+                                        "default": null
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Account"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/accounts/balance/collect": {
+            "get": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get organization collect balance",
+                "operationId": "get_post_collect_balance",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "balance": {
+                                            "type": "flaot",
+                                            "example": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get organization collect balance",
+                "operationId": "post_post_collect_balance",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "balance": {
+                                            "type": "flaot",
+                                            "example": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/accounts/balance/available": {
+            "get": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get organization avalaible balance",
+                "operationId": "get_post_available_balance",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "balance": {
+                                            "type": "flaot",
+                                            "example": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get organization avalaible balance",
+                "operationId": "post_post_available_balance",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "balance": {
+                                            "type": "flaot",
+                                            "example": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/accounts/balance/payout": {
+            "get": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get organization or user payout balance",
+                "operationId": "get_post_payout_balance",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "balance": {
+                                            "type": "flaot",
+                                            "example": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get organization or user payout balance",
+                "operationId": "post_post_payout_balance",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "balance": {
+                                            "type": "flaot",
+                                            "example": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "login to api broker with this endpoint",
+                "operationId": "post_app_login",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The field used to login",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/{version}/secure/business/": {
+            "get": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Get all business",
+                "operationId": "get_list_business",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Business"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/business/new": {
+            "post": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Create business",
+                "operationId": "post_create_business",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "maxPayoutAmount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "validatePayoutBeforProcess": {
+                                        "type": "boolean"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Business"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/business/{contact}/show": {
+            "get": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Get business",
+                "operationId": "get_show_business",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "contact",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Business"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/business/{business}/edit": {
+            "put": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Edit business",
+                "operationId": "put_edit_business",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "business",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "maxPayoutAmount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "validatePayoutBeforProcess": {
+                                        "type": "boolean"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Business"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/business/delete": {
+            "delete": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Delete business",
+                "operationId": "delete_delete_business",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Business"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/business/{page}": {
+            "get": {
+                "tags": [
+                    "Business"
+                ],
+                "summary": "Get all business with paginate",
+                "operationId": "get_list_business_paginate",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "\\d+"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/contactbook/": {
+            "get": {
+                "tags": [
+                    "Contact Boook"
+                ],
+                "summary": "Get all Contact Boook",
+                "operationId": "get_list_contacts",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ContactBook"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/contactbook/new": {
+            "post": {
+                "tags": [
+                    "Contact Boook"
+                ],
+                "summary": "Create Contact Boook",
+                "operationId": "post_create_contact",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "first_name": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "string"
+                                    },
+                                    "contact": {
+                                        "type": "string"
+                                    },
+                                    "country_code": {
+                                        "type": "string",
+                                        "default": "CI"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContactBook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/contactbook/{contact}/show": {
+            "get": {
+                "tags": [
+                    "Contact Boook"
+                ],
+                "summary": "Get Contact Boook",
+                "operationId": "get_show_contact",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "contact",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContactBook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/contactbook/{contact}/edit": {
+            "put": {
+                "tags": [
+                    "Contact Boook"
+                ],
+                "summary": "Edit Contact Boook",
+                "operationId": "put_edit_contact",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "contact",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "first_name": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "string"
+                                    },
+                                    "contact": {
+                                        "type": "string"
+                                    },
+                                    "country_code": {
+                                        "type": "string",
+                                        "default": "CI"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContactBook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/contactbook/delete": {
+            "delete": {
+                "tags": [
+                    "Contact Boook"
+                ],
+                "summary": "Delete Contact Boook",
+                "operationId": "delete_delete_contact",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContactBook2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/contactbook/{page}": {
+            "get": {
+                "tags": [
+                    "Contact Boook"
+                ],
+                "summary": "Get all Contact Boook with paginate",
+                "operationId": "get_list_contacts_paginate",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "\\d+"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/organizations/payout-validation-process": {
+            "post": {
+                "tags": [
+                    "Organization"
+                ],
+                "summary": "activate or desactivate payout process validation for organization",
+                "operationId": "post_org_payout_validation_process",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used change organization status",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Organization"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/organizations/max-payout-amount": {
+            "post": {
+                "tags": [
+                    "Organization"
+                ],
+                "summary": "Add max amount for payout transaction of organization",
+                "operationId": "post_org_max_payout_amount",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used change organization status",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "maxPayoutAmount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Organization"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/public/users/forgot-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "send email validation for reset password",
+                "operationId": "post_forgot_password_user",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/public/users/reset-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "change your password with the validation code recevied by email",
+                "operationId": "post_reset_password_user",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "newPassword": {
+                                        "type": "string"
+                                    },
+                                    "checkPassword": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/repayments/": {
+            "get": {
+                "tags": [
+                    "Repayment"
+                ],
+                "summary": "Get all Repayment",
+                "operationId": "get_list_repayments",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Repayment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/repayments/new": {
+            "post": {
+                "tags": [
+                    "Repayment"
+                ],
+                "summary": "Create Repayment",
+                "operationId": "post_create_repayment",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Repayment",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Repayment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/repayments/{repayment}/show": {
+            "get": {
+                "tags": [
+                    "Repayment"
+                ],
+                "summary": "Get Repayment",
+                "operationId": "get_show_repayment",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "repayment",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Repayment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/repayments/{repayment}/edit": {
+            "put": {
+                "tags": [
+                    "Repayment"
+                ],
+                "summary": "Edit Repayment",
+                "operationId": "put_edit_repayment",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "repayment",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Repayment",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Repayment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/report/organization": {
+            "post": {
+                "tags": [
+                    "Report Controller"
+                ],
+                "summary": "Generate Organization report",
+                "operationId": "post_generate_organization_report",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "start": {
+                                        "type": "string"
+                                    },
+                                    "end": {
+                                        "type": "string"
+                                    },
+                                    "organization": {
+                                        "type": "string",
+                                        "default": null
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "transactions": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Transaction"
+                                            }
+                                        },
+                                        "code": {
+                                            "type": "string",
+                                            "example": "string"
+                                        },
+                                        "start": {
+                                            "type": "string",
+                                            "example": "string"
+                                        },
+                                        "end": {
+                                            "type": "string",
+                                            "example": "string"
+                                        },
+                                        "organization": {
+                                            "type": "object",
+                                            "example": {
+                                                "code": "string",
+                                                "name": "string"
+                                            }
+                                        },
+                                        "startData": {
+                                            "type": "object",
+                                            "example": {
+                                                "collectBalance": "0",
+                                                "availableBalance": "0",
+                                                "payoutBalance": "0"
+                                            }
+                                        },
+                                        "endData": {
+                                            "type": "object",
+                                            "example": {
+                                                "collectBalance": "0",
+                                                "availableBalance": "0",
+                                                "payoutBalance": "0"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/topups/": {
+            "get": {
+                "tags": [
+                    "TopUp"
+                ],
+                "summary": "Get all TopUp",
+                "operationId": "get_list_topups",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Topup"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/topups/new": {
+            "post": {
+                "tags": [
+                    "TopUp"
+                ],
+                "summary": "Create TopUp",
+                "operationId": "post_create_topup",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "decription": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "string",
+                                        "default": null
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Topup"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/topups/{topup}/show": {
+            "get": {
+                "tags": [
+                    "TopUp"
+                ],
+                "summary": "Get TopUp",
+                "operationId": "get_show_topup",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "topup",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Topup"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/topups/{topup}/edit": {
+            "put": {
+                "tags": [
+                    "TopUp"
+                ],
+                "summary": "Edit TopUp",
+                "operationId": "put_edit_topup",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "topup",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "decription": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "user": {
+                                        "type": "string",
+                                        "default": null
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Topup"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/init": {
+            "post": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "initate transaction payin or payout or bulk payout",
+                "operationId": "post_init_checkout",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "operator": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    },
+                                    "mobile": {
+                                        "type": "string",
+                                        "default": "0129334567"
+                                    },
+                                    "operationType": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "default": 2
+                                    },
+                                    "countryCode": {
+                                        "type": "string",
+                                        "default": "CI"
+                                    },
+                                    "clientReference": {
+                                        "type": "string",
+                                        "default": null
+                                    },
+                                    "clientId": {
+                                        "type": "string",
+                                        "default": "Name of customer"
+                                    },
+                                    "successUrl": {
+                                        "type": "string",
+                                        "default": "https://billing.api/success"
+                                    },
+                                    "errorUrl": {
+                                        "type": "string",
+                                        "default": "https://billing.api/error"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Transaction2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/{sessionId}": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get checkout transaction with code",
+                "operationId": "get_get_checkout",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Transaction"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/{sessionId}/payout": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get payout transaction with code",
+                "operationId": "get_get_payout",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Transaction"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/{intBulkId}/payout/bulk": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get bulk payout transactions with code",
+                "operationId": "get_get_bulk_payout",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "intBulkId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Transaction3"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/{sessionId}/status": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get transaction status",
+                "operationId": "get_get_status",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Transaction"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/{payoutId}/payout/status": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get payout transaction status",
+                "operationId": "get_get_payout_status",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "payoutId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Transaction"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/validate": {
+            "post": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "as a user validator validate the payout or buldk payout transaction",
+                "operationId": "post_validate_payout_transaction",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "transactionId": {
+                                        "type": "string"
+                                    },
+                                    "idType": {
+                                        "type": "string",
+                                        "default": "payoutId"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "default": "VALIDATED"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Transaction2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/token": {
+            "post": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "Create a public url for make transaction",
+                "operationId": "post_checkout_token",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "publicToken": {
+                                            "type": "string",
+                                            "example": "string"
+                                        },
+                                        "ticketUrl": {
+                                            "type": "string",
+                                            "example": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/{intBulkId}/bulk-payout/status": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get bukl payout transaction status",
+                "operationId": "get_get_bulk_payout_status",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "intBulkId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Transaction"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/list": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get all transacition",
+                "operationId": "get_get_transactions",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Transaction"
+                                            }
+                                        },
+                                        "currentPage": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 15
+                                        },
+                                        "totalItems": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 20
+                                        },
+                                        "numPages": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "get all transacition with paginate",
+                "operationId": "get_get_transactions_paginate",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Transaction"
+                                            }
+                                        },
+                                        "currentPage": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 15
+                                        },
+                                        "totalItems": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 20
+                                        },
+                                        "numPages": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/transactions/list/export": {
+            "get": {
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "Export Transaction",
+                "operationId": "get_export_transactions",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Transaction"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/webhooks/show-webhook": {
+            "get": {
+                "tags": [
+                    "WebHooks"
+                ],
+                "summary": "Get organization webhook",
+                "operationId": "get_show_organization_webhook",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransactionWebhook"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "WebHooks"
+                ],
+                "summary": "Get organization webhook",
+                "operationId": "post_show_organization_webhook",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransactionWebhook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/webhooks/url": {
+            "post": {
+                "tags": [
+                    "WebHooks"
+                ],
+                "summary": "Configure your organization WebhookUrl for use the callback",
+                "operationId": "post_config_webhook_url",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransactionWebhook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/webhooks/token": {
+            "post": {
+                "tags": [
+                    "WebHooks"
+                ],
+                "summary": "Generate the secretKey",
+                "operationId": "post_config_webhook_token",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Fee",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TransactionWebhook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/users/new": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create User with role ADMIN or USER",
+                "operationId": "post_create_user",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields used create Account",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "organization": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/users/change-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "this endpoint is used to change password from profil interface",
+                "operationId": "post_change_password",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/users/payout-validator": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "activate payout validation for user",
+                "operationId": "post_payout_validator",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{version}/secure/users/max-payout-amount": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "add max amount of payout for user",
+                "operationId": "post_user_max_payout_amount",
+                "parameters": [
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "pattern": "v1|sandbox",
+                            "enum": [
+                                "v1",
+                                "sandbox"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The fields",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user": {
+                                        "type": "string"
+                                    },
+                                    "maxPayoutAmount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Account": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "organization": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Organization2"
+                            }
+                        ]
+                    },
+                    "user": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User3"
+                            }
+                        ]
+                    },
+                    "status": {
+                        "type": "string",
+                        "default": "ACTIVE",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "COLLECT",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "required": [
+                    "topups"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "default": "USER",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "default": "ACTIVE",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isPayoutValidator": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "maxPayoutAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "nullable": true
+                    },
+                    "topups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Topup2"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Business": {
+                "required": [
+                    "name",
+                    "code",
+                    "description"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "Get the value of name",
+                        "type": "string"
+                    },
+                    "code": {
+                        "title": "Get the value of code",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Get the value of description",
+                        "type": "string"
+                    },
+                    "validatePayoutBeforProcess": {
+                        "title": "Get the value of validatePayoutBeforProcess",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "maxPayoutAmount": {
+                        "title": "Get the value of maxPayoutAmount",
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "organization": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Organization3"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ContactBook": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contact": {
+                        "title": "Get the value of contact",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "organization": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Organization4"
+                            }
+                        ]
+                    },
+                    "user": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User4"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ContactBook2": {
+                "type": "object"
+            },
+            "Organization": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contact": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "default": "ACTIVE",
+                        "nullable": true
+                    },
+                    "bankDomiciliation": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "rib": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cryptoAccount": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "validatePayoutBeforProcess": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "maxPayoutAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "User2": {
+                "required": [
+                    "topups"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "default": "USER",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "default": "ACTIVE",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "organization": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Organization5"
+                            }
+                        ]
+                    },
+                    "isPayoutValidator": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "maxPayoutAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "nullable": true
+                    },
+                    "topups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Topup3"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Repayment": {
+                "required": [
+                    "fees"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "realAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "totalFees": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "fees": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Fee"
+                        }
+                    },
+                    "organization": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Organization6"
+                            }
+                        ]
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createdBy": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User5"
+                            }
+                        ]
+                    },
+                    "validatedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "validatedBy": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User5"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "Transaction": {
+                "properties": {
+                    "checkoutId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "payoutId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "intBulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "intOperatorBulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "payoutType": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "validationStatus": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "paymentStatus": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "currency": {
+                        "type": "string",
+                        "default": "XOF",
+                        "nullable": true
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "bulkTotalAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "operatorBulkTotalAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "collectBalance": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "countryCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "errorMessage": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contact": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "paymentUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "transactionDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "processingDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "finalStateDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "schedulingDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "operator": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Operator"
+                            }
+                        ]
+                    },
+                    "user": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User6"
+                            }
+                        ]
+                    },
+                    "business": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Business2"
+                            }
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "clientReference": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "clientId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "publicToken": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "publicTokenDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Topup": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "finalAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "totalFees": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createdBy": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User7"
+                            }
+                        ]
+                    },
+                    "status": {
+                        "type": "string",
+                        "default": "DRAFT",
+                        "nullable": true
+                    },
+                    "organization": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Organization7"
+                            }
+                        ]
+                    },
+                    "user": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User7"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "Transaction2": {
+                "properties": {
+                    "checkoutId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "payoutId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "intBulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "intOperatorBulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "payoutType": {
+                        "type": "integer",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Transaction3": {
+                "properties": {
+                    "checkoutId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "payoutId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "intBulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "intOperatorBulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "bulkId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "payoutType": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "validationStatus": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "paymentStatus": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "operationType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "currency": {
+                        "type": "string",
+                        "default": "XOF",
+                        "nullable": true
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "bulkTotalAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "operatorBulkTotalAmount": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "collectBalance": {
+                        "type": "number",
+                        "format": "float",
+                        "default": 0
+                    },
+                    "countryCode": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "errorMessage": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contact": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "paymentUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "transactionDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "processingDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "finalStateDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "schedulingDate": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "operator": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Operator2"
+                            }
+                        ]
+                    },
+                    "user": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/User8"
+                            }
+                        ]
+                    },
+                    "business": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/Business3"
+                            }
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "clientReference": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "clientId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "publicToken": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "publicTokenDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "TransactionWebhook": {
+                "type": "object"
+            },
+            "Organization2": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "User3": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Topup2": {
+                "type": "object"
+            },
+            "Organization3": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Organization4": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "User4": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Organization5": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Topup3": {
+                "type": "object"
+            },
+            "Fee": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "type": "number",
+                        "format": "float",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Organization6": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "User5": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Operator": {
+                "properties": {
+                    "mnoName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "paymentMethod": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "User6": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Business2": {
+                "required": [
+                    "name",
+                    "code"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "Get the value of name",
+                        "type": "string"
+                    },
+                    "code": {
+                        "title": "Get the value of code",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "User7": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Organization7": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Operator2": {
+                "properties": {
+                    "mnoName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "paymentMethod": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "User8": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Business3": {
+                "required": [
+                    "name",
+                    "code"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "Get the value of name",
+                        "type": "string"
+                    },
+                    "code": {
+                        "title": "Get the value of code",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Authentication related endpoints"
+        },
+        {
+            "name": "Account"
+        },
+        {
+            "name": "Business"
+        },
+        {
+            "name": "Contact Boook"
+        },
+        {
+            "name": "Organization"
+        },
+        {
+            "name": "User"
+        },
+        {
+            "name": "Repayment"
+        },
+        {
+            "name": "Report Controller"
+        },
+        {
+            "name": "TopUp"
+        },
+        {
+            "name": "Transaction"
+        },
+        {
+            "name": "WebHooks"
+        }
+    ]
+}
