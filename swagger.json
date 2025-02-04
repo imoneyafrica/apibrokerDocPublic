@@ -474,45 +474,6 @@
                 ]
             }
         },
-        "/api/{version}/secure/business/": {
-            "get": {
-                "tags": [
-                    "Business"
-                ],
-                "summary": "Get all business",
-                "operationId": "get_list_business",
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "pattern": "v1|sandbox",
-                            "enum": [
-                                "v1",
-                                "sandbox"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Business"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/{version}/secure/business/new": {
             "post": {
                 "tags": [
@@ -784,45 +745,6 @@
                 "responses": {
                     "default": {
                         "description": ""
-                    }
-                }
-            }
-        },
-        "/api/{version}/secure/contactbook/": {
-            "get": {
-                "tags": [
-                    "Contact Boook"
-                ],
-                "summary": "Get all Contact Boook",
-                "operationId": "get_list_contacts",
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "pattern": "v1|sandbox",
-                            "enum": [
-                                "v1",
-                                "sandbox"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ContactBook"
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -2223,65 +2145,6 @@
                                     "items": {
                                         "$ref": "#/components/schemas/Transaction"
                                     }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/{version}/secure/transactions/list": {
-            "get": {
-                "tags": [
-                    "Transaction"
-                ],
-                "summary": "get all transacition",
-                "operationId": "get_get_transactions",
-                "parameters": [
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "pattern": "v1|sandbox",
-                            "enum": [
-                                "v1",
-                                "sandbox"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/Transaction"
-                                            }
-                                        },
-                                        "currentPage": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": 15
-                                        },
-                                        "totalItems": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": 20
-                                        },
-                                        "numPages": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": 1
-                                        }
-                                    },
-                                    "type": "object"
                                 }
                             }
                         }
