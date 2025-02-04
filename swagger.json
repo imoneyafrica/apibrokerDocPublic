@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http://sandbox.apibroker.africa",
+            "url": "https://sandbox.apibroker.africa",
             "description": "Sandbox Server"
         }
     ],
