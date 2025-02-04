@@ -7,12 +7,8 @@
     },
     "servers": [
         {
-            "url": "https://apibroker.beta.imoney.africa",
+            "url": "http://sandbox.apibroker.africa",
             "description": "Dev Server"
-        },
-        {
-            "url": "https://bf060back.preprod.apibroker.africa",
-            "description": "Preprod Server"
         }
     ],
     "paths": {
